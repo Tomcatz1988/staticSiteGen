@@ -8,13 +8,15 @@ class LeafNode(HTMLNode):
     def to_html(self):
         if self.value == None:
             raise ValueError("leaf node has no value")
+        html = ""
         match self.tag:        
             case None:
-                return f"{value}"
+                html = f"{self.value}"
             case "img":
-                return f"<{self.tag}{self.props_to_html()} />"
+                html = f"<{self.tag}{self.props_to_html()} />"
             case _:
-                return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
+                html = f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
+        return html
 
 
     def __repr__(self):
