@@ -19,13 +19,11 @@ class testHTMLNode(unittest.TestCase):
     def test_tag_init(self):
         test_tag = "<p>"
         node = HTMLNode(tag=test_tag)
-        print(node)
         self.assertEqual(node.tag, test_tag)
     
     def test_value_init(self):
         test_val = "This would be inside of a paragraph"
         node = HTMLNode(value=test_val)
-        print(node)
         self.assertEqual(node.value, test_val)
 
     def test_children_init(self):
