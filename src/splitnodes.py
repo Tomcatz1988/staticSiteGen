@@ -30,14 +30,14 @@ def splitNodesEmbedded(old_nodes, text_type):
     new_nodes = []
     for node in old_nodes:
         links = extractMarkdownLinks(node.text) if text_type == TextType.LINK else extractMarkdownImages(node.text)
-        if ((node.text_type is TextType.TEXT) and (len(links) > 0)):
+        if ((node.text_type in inline_text_type) and (len(links) > 0)):
             if len(links) > 0:
                 delimiter = f"[{links[0][0]}]({links[0][1]})" if text_type == TextType.LINK else f"![{links[0][0]}]({links[0][1]})"
                 texts = node.text.split(delimiter)
                 temp_nodes= []
                 for i in range(len(texts)):
                     if texts[i] != "":
-                        temp_nodes.append(TextNode(texts[i], TextType.TEXT))
+                        temp_nodes.append(TextNode(texts[i], node.text_type))
                     if (i < (len(texts) - 1)):
                         link_node = TextNode(links[0][0], text_type, url=links[0][1])
                         temp_nodes.append(link_node)
