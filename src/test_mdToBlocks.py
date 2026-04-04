@@ -1,5 +1,5 @@
 import unittest
-from markdownToBlocks import markdownToBlocks
+from mdToBlocks import mdToBlocks
 
 
 class testMarkdownToBlocks(unittest.TestCase):
@@ -13,7 +13,7 @@ This is the same paragraph on a new line
 - This is a list
 - with items
 """
-        blocks = markdownToBlocks(md)
+        blocks = mdToBlocks(md)
         self.assertEqual(
             blocks,
             [
@@ -35,7 +35,7 @@ This is the same paragraph on a new line
 - with items
                         
 """
-        blocks = markdownToBlocks(md)
+        blocks = mdToBlocks(md)
         self.assertEqual(
             blocks,
             [

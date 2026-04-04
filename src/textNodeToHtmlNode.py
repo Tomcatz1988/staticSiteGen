@@ -2,7 +2,7 @@ from textnode import TextNode, TextType
 from htmlnode import ParentNode, LeafNode
 
 
-def textToHtml(text_node):
+def textNodeToHtmlNode(text_node):
     match text_node.text_type:
         case TextType.TEXT:
             return LeafNode(None, text_node.text)
