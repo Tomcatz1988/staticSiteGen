@@ -1,14 +1,27 @@
-from textnode import *
+import os
+import shutil
+from mdToHtmlNode import mdToHtmlNode
 
 
 def main():
-    plain = TextNode("This is plain text", TextType.PLAIN)
-    bold = TextNode("Make this bold", TextType.BOLD)
-    italic = TextNode("This is italics", TextType.ITALIC)
-    code = TextNode("This should be code", TextType.CODE)
-    link = TextNode("Here is a link", TextType.LINK, "http://www.google.com")
-    image = TextNode("Look at this picture", TextType.IMAGE, "http://www.imgur.com")
-    print(f"{plain}\n{bold}\n{italic}\n{code}\n{link}\n{image}")
+    ROOT_DIR = "/home/jds1988/myProjects/staticSiteGen"
+    if os.path.exists(ROOT_DIR + "/public"):
+        shutil.rmtree(ROOT_DIR + "/public", ignore_errors=True)
+    os.mkdir(ROOT_DIR + "/public")
+    copyDirectory(ROOT_DIR + "/static", ROOT_DIR + "/public")
+
+
+def copyDirectory(source, destination):
+    sourceContents = os.listdir(path=source)
+    for content in sourceContents:
+        srcPath = os.path.join(source, content)
+        destPath = os.path.join(destination, content)
+        if os.path.isfile(srcPath):
+            shutil.copy(srcPath, destPath)
+        else:
+            os.mkdir(destPath)
+            copyDirectory(srcPath, destPath)
+
 
 if __name__ == "__main__":
     main()
