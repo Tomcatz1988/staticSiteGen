@@ -1,5 +1,5 @@
 import unittest
-from extractFromMarkdown import extractMarkdownImages, extractMarkdownLinks
+from texttonode import extractMarkdownImages, extractMarkdownLinks
 
 
 class testExtractFromMarkdown(unittest.TestCase):

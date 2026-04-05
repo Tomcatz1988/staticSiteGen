@@ -1,5 +1,5 @@
 import unittest
-from splitnodes import splitNodesEmbedded
+from texttonode import splitNodesEmbedded
 from textnode import TextNode, TextType
 
 

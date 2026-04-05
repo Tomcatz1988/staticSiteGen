@@ -1,10 +1,11 @@
 import os
 import shutil
+from constants import ROOT_DIR
 from mdToHtmlNode import mdToHtmlNode
+from generatePage import generatePage
 
 
 def main():
-    ROOT_DIR = "/home/jds1988/myProjects/staticSiteGen"
     if os.path.exists(ROOT_DIR + "/public"):
         shutil.rmtree(ROOT_DIR + "/public", ignore_errors=True)
     os.mkdir(ROOT_DIR + "/public")
@@ -12,15 +13,15 @@ def main():
 
 
 def copyDirectory(source, destination):
-    sourceContents = os.listdir(path=source)
-    for content in sourceContents:
-        srcPath = os.path.join(source, content)
-        destPath = os.path.join(destination, content)
-        if os.path.isfile(srcPath):
-            shutil.copy(srcPath, destPath)
+    src_contents = os.listdir(path=source)
+    for content in src_contents:
+        src_path = os.path.join(source, content)
+        dest_path = os.path.join(destination, content)
+        if os.path.isfile(src_path):
+            shutil.copy(src_path, dest_path)
         else:
-            os.mkdir(destPath)
-            copyDirectory(srcPath, destPath)
+            os.mkdir(dest_path)
+            copyDirectory(src_path, dest_path)
 
 
 if __name__ == "__main__":

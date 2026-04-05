@@ -10,11 +10,11 @@ class testHTMLNode(unittest.TestCase):
         }
         node = HTMLNode(props=test_prop)
         expected_string = " href=\"https://www.google.com\" target=\"_blank\""
-        self.assertEqual(expected_string, node.props_to_html())
+        self.assertEqual(expected_string, node.propsToHtml())
 
     def test_empty_props(self):
         node = HTMLNode()
-        self.assertEqual("", node.props_to_html())
+        self.assertEqual("", node.propsToHtml())
 
     def test_tag_init(self):
         test_tag = "<p>"

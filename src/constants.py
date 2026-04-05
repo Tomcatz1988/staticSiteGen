@@ -1,12 +1,16 @@
 from textnode import TextType
 
-inline_delimiter_map ={
+
+ROOT_DIR = "/home/jds1988/myProjects/staticSiteGen"
+
+
+INLINE_DELIMITER_MAP = {
     "**": TextType.BOLD,
     "_": TextType.ITALIC,
     "`": TextType.CODE,
 }
 
-inline_text_type = (
+INLINE_TEXT_TYPE = (
     TextType.TEXT, 
     TextType.BOLD, 
     TextType.ITALIC, 

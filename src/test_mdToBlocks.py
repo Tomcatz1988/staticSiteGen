@@ -1,5 +1,5 @@
 import unittest
-from mdToBlocks import mdToBlocks
+from mdtohtml import mdToBlocks
 
 
 class testMarkdownToBlocks(unittest.TestCase):

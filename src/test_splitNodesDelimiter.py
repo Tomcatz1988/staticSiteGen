@@ -1,7 +1,7 @@
 import unittest
-from splitnodes import splitNodesDelimiter
+from texttonode import splitNodesDelimiter
 from textnode import TextNode, TextType
-from delimiter_map import inline_delimiter_map
+from constants import INLINE_DELIMITER_MAP
 
 
 class testSplitNodesDelimiter(unittest.TestCase):
@@ -69,7 +69,7 @@ class testSplitNodesDelimiter(unittest.TestCase):
     def test_nested_delimiter_splits(self):
         node = TextNode("This is text with **multiple `code block`** words _this `is a` test_", TextType.TEXT)
         new_nodes = [node]
-        for delimiter in inline_delimiter_map:
+        for delimiter in INLINE_DELIMITER_MAP:
             new_nodes = splitNodesDelimiter(new_nodes, delimiter)
         self.assertEqual(new_nodes, [
                 TextNode("This is text with ", TextType.TEXT),

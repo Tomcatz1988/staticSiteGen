@@ -1,5 +1,5 @@
 import unittest
-from textNodeToHtmlNode import textNodeToHtmlNode
+from texttohtml import textNodeToHtmlNode
 from textnode import TextNode, TextType
 from htmlnode import ParentNode, LeafNode
 
