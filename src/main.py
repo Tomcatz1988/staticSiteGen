@@ -6,12 +6,11 @@ from genpage import generatePage
 
 
 def main():
-    basepath = os.path.dirname(os.path.dirname(sys.argv[0])) + "/"
-    abs_basepath = os.path.dirname(os.path.dirname(os.path.abspath(sys.argv[0]))) + "/"
-    dest_path = abs_basepath + "docs"
-    static_path = abs_basepath + "static"
-    md_path = abs_basepath + "content"
-    template_path = abs_basepath + "template.html"
+    basepath = "/" if len(sys.argv) > 0 else os.path.dirname(os.path.dirname(sys.argv[0])) + "/"
+    dest_path = basepath + "docs"
+    static_path = basepath + "static"
+    md_path = basepath + "content"
+    template_path = basepath + "template.html"
 
     if os.path.exists(dest_path):
         shutil.rmtree(dest_path, ignore_errors=True)
