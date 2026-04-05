@@ -11,7 +11,7 @@ def extractTitle(html):
     return title
 
 
-def generatePage(src_path, template_path, dest_path):
+def generatePage(src_path, template_path, dest_path, basepath):
     print(f"Generating page from \'{src_path}\' to \'{dest_path}\' using template \'{template_path}\'")
     file = open(src_path)
     md = file.read()
@@ -22,7 +22,12 @@ def generatePage(src_path, template_path, dest_path):
     
     html = mdToHtmlNode(md).toHtml()
     title = extractTitle(html)
-    page = template.replace("{{ Title }}", title).replace("{{ Content }}", html)
+    page = template.replace(
+        "{{ Title }}", title).replace(
+        "{{ Content }}", html).replace(
+        "href=\"/", f"href=\"{basepath}").replace(
+        "src=\"/", f"src=\"{basepath}"
+    )
 
     os.makedirs(os.path.abspath(os.path.dirname(dest_path)), exist_ok=True)
     file = open(dest_path, mode='w')
